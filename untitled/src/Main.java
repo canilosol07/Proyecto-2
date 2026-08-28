@@ -43,7 +43,8 @@ public class Main {
         miLista.isEmpty();
         System.out.println(miLista.isEmpty());
 
-        //Modulo add(object object)
+        miLista.set(miLista.cabeza,9);
+        System.out.println(miLista.toString());
     }
 
 }

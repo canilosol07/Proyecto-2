@@ -63,6 +63,7 @@ public class MiLista implements ListInterface{
 
     @Override
     public boolean insert(ListNode node, Object object) {
+        N
         return false;
     }
 
@@ -107,11 +108,13 @@ public class MiLista implements ListInterface{
 
     @Override
     public boolean set(ListNode node, Object object) {
-        return false;
+        node.dato = object;
+        return true;
     }
 
     @Override
     public boolean remove(ListNode node) {
+
         return false;
     }
 
