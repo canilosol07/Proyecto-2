@@ -42,9 +42,15 @@ public class Main {
         //Modulo isEmpty
         miLista.isEmpty();
         System.out.println(miLista.isEmpty());
-
+        //Modulo toString
         miLista.set(miLista.cabeza,9);
         System.out.println(miLista.toString());
+        //Modulo getBeforeTo
+        System.out.println("aqui");
+        System.out.println(miLista.getBeforeTo(miLista.cabeza));
+        //Modulo getNextTo
+        System.out.println(miLista.getNextTo(miLista.cabeza));
+
     }
 
 }

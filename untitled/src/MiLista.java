@@ -1,14 +1,13 @@
 import java.util.Iterator;
 
-public class MiLista implements ListInterface{
+public class MiLista implements ListInterface {
     ListNode cabeza;
 
     @Override
     public boolean isEmpty() {
-        if(this.cabeza == null) {
+        if (this.cabeza == null) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -17,7 +16,7 @@ public class MiLista implements ListInterface{
     public int getSize() {
         ListNode iterador = this.cabeza;
         int contador = 1;
-        while (iterador.siguiente != null){
+        while (iterador.siguiente != null) {
             iterador = iterador.siguiente;
             contador = contador + 1;
         }
@@ -63,7 +62,6 @@ public class MiLista implements ListInterface{
 
     @Override
     public boolean insert(ListNode node, Object object) {
-        N
         return false;
     }
 
@@ -82,7 +80,7 @@ public class MiLista implements ListInterface{
             //3er paso: redefinir la cabeza
             this.cabeza = nuevaCabeza;
             return true;
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Ocurrió un error");
             return false;
         }
@@ -90,10 +88,10 @@ public class MiLista implements ListInterface{
 
     @Override
     public boolean insertTail(Object object) {
-        if(this.cabeza == null){
+        if (this.cabeza == null) {
             ListNode nuevaCabeza = new ListNode(object);
             this.cabeza = nuevaCabeza;
-        }else {
+        } else {
             ListNode nuevaCola = new ListNode(object);
             ListNode iterador = this.cabeza;
             while (iterador.siguiente != null) {
@@ -123,10 +121,6 @@ public class MiLista implements ListInterface{
         return false;
     }
 
-    @Override
-    public Iterator<ListNode> iterator() {
-        return null;
-    }
 
     @Override
     public Object[] toArray() {
@@ -138,24 +132,29 @@ public class MiLista implements ListInterface{
         return new Object[0];
     }
 
-    @Override
-    public Object getBeforeTo() {
-        return null;
-    }
 
     @Override
     public Object getBeforeTo(ListNode node) {
+        ListNode iterador = this.cabeza;
+        ListNode anterior = cabeza;
+        while (iterador.siguiente != null) {
+            if (iterador == node) {
+                if (anterior == null) {
+                    return null;
+                }
+                return anterior.dato;
+
+            }
+            anterior = iterador;
+            iterador = iterador.siguiente;
+        }
         return null;
     }
 
-    @Override
-    public Object getNextTo() {
-        return null;
-    }
 
     @Override
     public Object getNextTo(ListNode node) {
-        return null;
+        return node.siguiente.dato;
     }
 
     @Override
