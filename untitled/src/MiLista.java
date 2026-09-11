@@ -232,12 +232,59 @@ public class MiLista implements ListInterface {
 
     @Override
     public MiLista subList(ListNode from, ListNode to) {
+        MiLista subLista = new MiLista();
+        ListNode nodoInicio = buscarNodo(from);
+        ListNode nodoFin = buscarNodo(to);
+        if (nodoInicio == null || nodoFin == null) {
+            return subLista;
+        }
+        ListNode actual = nodoInicio;
+        while (actual != null) {
+            subLista.insertTail(actual.dato);
+            if (actual == nodoFin) {
+                return subLista;
+            }
+            actual = actual.siguiente;
+        }
+        return new MiLista();
+    }
+    ListNode buscarNodo(ListNode nodo) {
+        ListNode actual = this.cabeza;
+        while (actual != null) {
+            if (actual == nodo) {
+                return actual;
+            }
+            actual = actual.siguiente;
+        }
         return null;
     }
 
     @Override
     public MiLista sortList() {
-        return null;
+        Object[] arreglo = this.toArray();
+
+        int i = 0;
+        while (i < arreglo.length - 1) {
+            int j = 0;
+            while (j < arreglo.length - 1 - i) {
+                Comparable actual = (Comparable) arreglo[j];
+                if (actual.compareTo(arreglo[j + 1]) > 0) {
+                    Object temporal = arreglo[j];
+                    arreglo[j] = arreglo[j + 1];
+                    arreglo[j + 1] = temporal;
+                }
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+
+        MiLista listaOrdenada = new MiLista();
+        int k = 0;
+        while (k < arreglo.length) {
+            listaOrdenada.insertTail(arreglo[k]);
+            k = k + 1;
+        }
+        return listaOrdenada;
     }
 
     @Override

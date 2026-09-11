@@ -70,7 +70,16 @@ public class Main {
         for (int i = 0; i < arreglo.length; i++) {
             System.out.println(arreglo[i]);
         }
+        //Modulo sortList()
+        MiLista listaNumeros = new MiLista();
+        listaNumeros.insertTail(5);
+        listaNumeros.insertTail(2);
+        listaNumeros.insertTail(8);
+        listaNumeros.insertTail(1);
+        System.out.println(listaNumeros.sortList());
 
+        //Modulo subList(ListNode from, ListNode to)
+        System.out.println(miLista.subList(miLista.cabeza, miLista.cabeza.siguiente));
     }
 
 }
