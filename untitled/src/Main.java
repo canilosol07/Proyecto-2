@@ -50,6 +50,26 @@ public class Main {
         System.out.println(miLista.getBeforeTo(miLista.cabeza));
         //Modulo getNextTo
         System.out.println(miLista.getNextTo(miLista.cabeza));
+        //Modulo insert(ListNode node, Object object)
+        System.out.println(miLista.insert(miLista.cabeza, "PRUEBA"));
+        //Modulo search(Object object)
+        System.out.println(miLista.search("Camilo"));
+        //Moduelo get(ListNode node)
+        System.out.println(miLista.get(miLista.cabeza));
+        //Modulo add(Object object)
+        System.out.println(miLista.add("add"));
+        //Modulo insert(Object ob, Object object)
+        System.out.println(miLista.insert(6, 7));
+        //Modulo remove(ListNode node)
+        System.out.println(miLista.remove(miLista.cabeza.siguiente));
+        //Modulo contains(Object object)
+        System.out.println(miLista.contains(6));
+        System.out.println(miLista.contains(100000));
+        //Modulo toArray(Object[] object)
+        Object[] arreglo = miLista.toArray();
+        for (int i = 0; i < arreglo.length; i++) {
+            System.out.println(arreglo[i]);
+        }
 
     }
 

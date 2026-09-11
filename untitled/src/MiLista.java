@@ -26,7 +26,6 @@ public class MiLista implements ListInterface {
     @Override
     public void clear() {
         this.cabeza = null;
-
     }
 
     @Override
@@ -44,29 +43,63 @@ public class MiLista implements ListInterface {
 
     @Override
     public Object get(ListNode node) {
-
+        ListNode cabeza =  this.cabeza;
+        while (cabeza != null) {
+            if (cabeza == node) {
+                return cabeza.dato;
+            }
+            cabeza = cabeza.siguiente;
+        }
         return null;
     }
 
     @Override
     public Object search(Object object) {
-
+        ListNode cabeza = this.cabeza;
+        while (cabeza != null) {
+            if (cabeza.dato == object) {
+                return cabeza.dato;
+            }
+            cabeza = cabeza.siguiente;
+        }
         return null;
     }
 
     @Override
     public boolean add(Object object) {
-        insertTail(object);
-        return false;
+       return insertTail(object);
     }
 
     @Override
     public boolean insert(ListNode node, Object object) {
+        if (node==null) {
         return false;
+    }
+        ListNode cabeza = this.cabeza;
+        while (cabeza != null) {
+            if (cabeza == node) {
+                ListNode nuevoNodo = new ListNode(object);
+                nuevoNodo.siguiente = node.siguiente;
+                node.siguiente = nuevoNodo;
+                return true;
+            }
+            cabeza = cabeza.siguiente;
+        }
+    return false;
     }
 
     @Override
     public boolean insert(Object ob, Object object) {
+        ListNode cabeza = this.cabeza;
+        while (cabeza != null) {
+            if (cabeza.dato == ob) {
+                ListNode nuevoNodo = new ListNode(object);
+                nuevoNodo.siguiente = cabeza.siguiente;
+                cabeza.siguiente = nuevoNodo;
+                return true;
+            }
+            cabeza = cabeza.siguiente;
+        }
         return false;
     }
 
@@ -112,31 +145,71 @@ public class MiLista implements ListInterface {
 
     @Override
     public boolean remove(ListNode node) {
-
+        ListNode cabeza = this.cabeza;
+        while (cabeza.siguiente != null) {
+            if (cabeza.siguiente == node) {
+                cabeza.siguiente = node.siguiente;
+                return true;
+            }
+            cabeza = cabeza.siguiente;
+        }
         return false;
     }
 
     @Override
     public boolean contains(Object object) {
+        ListNode cabeza =  this.cabeza;
+        while (cabeza != null) {
+            if (cabeza.dato == object){
+                return true;
+            }
+            cabeza = cabeza.siguiente;
+        }
         return false;
     }
 
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        Object[] arreglo = new Object[this.getSize()];
+
+        ListNode actual = this.cabeza;
+        int i = 0;
+
+        while (actual != null) {
+
+            arreglo[i] = actual.dato;
+            i = i + 1;
+
+            actual = actual.siguiente;
+        }
+
+        return arreglo;
     }
 
     @Override
     public Object[] toArray(Object[] object) {
-        return new Object[0];
+        int size = getSize();
+        if (object.length < size) {
+            object = new Object[size];
+
+        }
+        ListNode cabeza = this.cabeza;
+        int i = 0;
+
+        while (cabeza != null) {
+            object[i] = cabeza.dato;
+            i = i+1;
+            cabeza = cabeza.siguiente;
+        }
+        return object;
     }
 
 
     @Override
     public Object getBeforeTo(ListNode node) {
         ListNode iterador = this.cabeza;
-        ListNode anterior = cabeza;
+        ListNode anterior = null;
         while (iterador.siguiente != null) {
             if (iterador == node) {
                 if (anterior == null) {
